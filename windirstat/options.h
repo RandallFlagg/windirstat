@@ -171,8 +171,8 @@ public:
     virtual bool getBool(LPCTSTR section, LPCTSTR entry, bool defaultValue);
 
 private:
-    std::auto_ptr<ICfgStorage> m_primaryStore;
-    std::auto_ptr<ICfgStorage> m_secondaryStore;
+    std::unique_ptr<ICfgStorage> m_primaryStore;
+    std::unique_ptr<ICfgStorage> m_secondaryStore;
 };
 
 class CRegistryUser

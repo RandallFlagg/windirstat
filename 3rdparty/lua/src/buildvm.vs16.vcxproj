@@ -20,13 +20,13 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -63,9 +63,11 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeader></PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat></DebugInformationFormat>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
       <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
     <ResourceCompile>
@@ -83,7 +85,8 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PreBuildEvent>
-      <Command>if not exist &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc&quot; md &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc&quot;&#x0D;&#x0A;minilua ..\dynasm\dynasm.lua -LN -D WIN -D JIT -D FFI -o &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\buildvm_arch.h&quot; vm_x86.dasc</Command>
+      <Command>if not exist "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc" md "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc"
+minilua ..\dynasm\dynasm.lua -LN -D WIN -D JIT -D FFI -o "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\buildvm_arch.h" vm_x86.dasc</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -95,9 +98,11 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeader></PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat></DebugInformationFormat>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
       <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
     <ResourceCompile>
@@ -115,7 +120,8 @@
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <PreBuildEvent>
-      <Command>if not exist &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc&quot; md &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc&quot;&#x0D;&#x0A;minilua ..\dynasm\dynasm.lua -LN -D WIN -D JIT -D FFI -D P64 -o &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\buildvm_arch.h&quot; vm_x86.dasc</Command>
+      <Command>if not exist "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc" md "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc"
+minilua ..\dynasm\dynasm.lua -LN -D WIN -D JIT -D FFI -D P64 -o "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\buildvm_arch.h" vm_x86.dasc</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

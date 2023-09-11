@@ -324,16 +324,16 @@ public:
 #endif
 
         /** Strict less ordering by name of key only */
-        struct KeyOrder : std::binary_function<Entry, Entry, bool> {
-            bool operator()(const Entry & lhs, const Entry & rhs) const {
+        struct KeyOrder {
+            bool operator()(const Entry& lhs, const Entry& rhs) const {
                 const static SI_STRLESS isLess = SI_STRLESS();
                 return isLess(lhs.pItem, rhs.pItem);
             }
         };
 
         /** Strict less ordering by order, and then name of key */
-        struct LoadOrder : std::binary_function<Entry, Entry, bool> {
-            bool operator()(const Entry & lhs, const Entry & rhs) const {
+        struct LoadOrder {
+            bool operator()(const Entry& lhs, const Entry& rhs) const {
                 if (lhs.nOrder != rhs.nOrder) {
                     return lhs.nOrder < rhs.nOrder;
                 }
@@ -343,10 +343,10 @@ public:
     };
 
     /** map keys to values */
-    typedef std::multimap<Entry,const SI_CHAR *,typename Entry::KeyOrder> TKeyVal;
+    using TKeyVal = std::multimap<Entry, const SI_CHAR*, typename Entry::KeyOrder>;
 
     /** map sections to key/value map */
-    typedef std::map<Entry,TKeyVal,typename Entry::KeyOrder> TSection;
+    using TSection = std::map<Entry,TKeyVal,typename Entry::KeyOrder>;
 
     /** set of dependent string pointers. Note that these pointers are
         dependent on memory owned by CSimpleIni.
@@ -2045,7 +2045,7 @@ CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::SetLongValue(
 #endif // __STDC_WANT_SECURE_LIB__
 
     // convert to output text
-    SI_CHAR szOutput[64];
+    SI_CHAR szOutput[64]{};
     SI_CONVERTER c(m_bStoreIsUtf8);
     c.ConvertFromStore(szInput, strlen(szInput) + 1, 
         szOutput, sizeof(szOutput) / sizeof(SI_CHAR));
@@ -2107,7 +2107,7 @@ CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::SetDoubleValue(
 #endif // __STDC_WANT_SECURE_LIB__
 
 	// convert to output text
-	SI_CHAR szOutput[64];
+    SI_CHAR szOutput[64]{};
 	SI_CONVERTER c(m_bStoreIsUtf8);
 	c.ConvertFromStore(szInput, strlen(szInput) + 1, 
 		szOutput, sizeof(szOutput) / sizeof(SI_CHAR));
@@ -2168,7 +2168,7 @@ CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::SetBoolValue(
     const char * pszInput = a_bValue ? "true" : "false";
 
     // convert to output text
-    SI_CHAR szOutput[64];
+    SI_CHAR szOutput[64]{};
     SI_CONVERTER c(m_bStoreIsUtf8);
     c.ConvertFromStore(pszInput, strlen(pszInput) + 1, 
         szOutput, sizeof(szOutput) / sizeof(SI_CHAR));

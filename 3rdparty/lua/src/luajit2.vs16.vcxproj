@@ -20,13 +20,13 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -59,20 +59,22 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeader></PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat></DebugInformationFormat>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
       <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\dynasm;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
-  <Lib>
-    <OutputFile>$(OutDir)luajit2_$(Platform).lib</OutputFile>
-    <AdditionalOptions>/nodefaultlib &quot;$(IntDir)\lj_vm32.obj&quot; %(AdditionalOptions)</AdditionalOptions>
-    <TargetMachine>MachineX86</TargetMachine>
-  </Lib>
+    <Lib>
+      <OutputFile>$(OutDir)luajit2_$(Platform).lib</OutputFile>
+      <AdditionalOptions>/nodefaultlib "$(IntDir)\lj_vm32.obj" %(AdditionalOptions)</AdditionalOptions>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Lib>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -80,7 +82,13 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>if not exist &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc&quot; md &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc&quot;&#x0D;&#x0A;buildvm32 -m peobj -o &quot;$(IntDir)\lj_vm32.obj&quot;&#x0D;&#x0A;buildvm32 -m bcdef -o &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_bcdef.h&quot; lib_base.c lib_math.c lib_bit.c lib_string.c lib_table.c lib_io.c lib_os.c lib_package.c lib_debug.c lib_jit.c lib_ffi.c&#x0D;&#x0A;buildvm32 -m ffdef -o &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_ffdef.h&quot; lib_base.c lib_math.c lib_bit.c lib_string.c lib_table.c lib_io.c lib_os.c lib_package.c lib_debug.c lib_jit.c lib_ffi.c&#x0D;&#x0A;buildvm32 -m libdef -o &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_libdef.h&quot; lib_base.c lib_math.c lib_bit.c lib_string.c lib_table.c lib_io.c lib_os.c lib_package.c lib_debug.c lib_jit.c lib_ffi.c&#x0D;&#x0A;buildvm32 -m recdef -o &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_recdef.h&quot; lib_base.c lib_math.c lib_bit.c lib_string.c lib_table.c lib_io.c lib_os.c lib_package.c lib_debug.c lib_jit.c lib_ffi.c&#x0D;&#x0A;buildvm32 -m folddef -o &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_folddef.h&quot; lj_opt_fold.c</Command>
+      <Command>if not exist "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc" md "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc"
+buildvm32 -m peobj -o "$(IntDir)\lj_vm32.obj"
+buildvm32 -m bcdef -o "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_bcdef.h" lib_base.c lib_math.c lib_bit.c lib_string.c lib_table.c lib_io.c lib_os.c lib_package.c lib_debug.c lib_jit.c lib_ffi.c
+buildvm32 -m ffdef -o "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_ffdef.h" lib_base.c lib_math.c lib_bit.c lib_string.c lib_table.c lib_io.c lib_os.c lib_package.c lib_debug.c lib_jit.c lib_ffi.c
+buildvm32 -m libdef -o "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_libdef.h" lib_base.c lib_math.c lib_bit.c lib_string.c lib_table.c lib_io.c lib_os.c lib_package.c lib_debug.c lib_jit.c lib_ffi.c
+buildvm32 -m recdef -o "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_recdef.h" lib_base.c lib_math.c lib_bit.c lib_string.c lib_table.c lib_io.c lib_os.c lib_package.c lib_debug.c lib_jit.c lib_ffi.c
+buildvm32 -m folddef -o "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_folddef.h" lj_opt_fold.c</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -92,20 +100,22 @@
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <PrecompiledHeader></PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat></DebugInformationFormat>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
       <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>NDEBUG;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\dynasm;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
-  <Lib>
-    <OutputFile>$(OutDir)luajit2_$(Platform).lib</OutputFile>
-    <AdditionalOptions>/nodefaultlib &quot;$(IntDir)\lj_vm64.obj&quot; %(AdditionalOptions)</AdditionalOptions>
-    <TargetMachine>MachineX64</TargetMachine>
-  </Lib>
+    <Lib>
+      <OutputFile>$(OutDir)luajit2_$(Platform).lib</OutputFile>
+      <AdditionalOptions>/nodefaultlib "$(IntDir)\lj_vm64.obj" %(AdditionalOptions)</AdditionalOptions>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -113,7 +123,13 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>if not exist &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc&quot; md &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc&quot;&#x0D;&#x0A;buildvm64 -m peobj -o &quot;$(IntDir)\lj_vm64.obj&quot;&#x0D;&#x0A;buildvm64 -m bcdef -o &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_bcdef.h&quot; lib_base.c lib_math.c lib_bit.c lib_string.c lib_table.c lib_io.c lib_os.c lib_package.c lib_debug.c lib_jit.c lib_ffi.c&#x0D;&#x0A;buildvm64 -m ffdef -o &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_ffdef.h&quot; lib_base.c lib_math.c lib_bit.c lib_string.c lib_table.c lib_io.c lib_os.c lib_package.c lib_debug.c lib_jit.c lib_ffi.c&#x0D;&#x0A;buildvm64 -m libdef -o &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_libdef.h&quot; lib_base.c lib_math.c lib_bit.c lib_string.c lib_table.c lib_io.c lib_os.c lib_package.c lib_debug.c lib_jit.c lib_ffi.c&#x0D;&#x0A;buildvm64 -m recdef -o &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_recdef.h&quot; lib_base.c lib_math.c lib_bit.c lib_string.c lib_table.c lib_io.c lib_os.c lib_package.c lib_debug.c lib_jit.c lib_ffi.c&#x0D;&#x0A;buildvm64 -m folddef -o &quot;..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_folddef.h&quot; lj_opt_fold.c</Command>
+      <Command>if not exist "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc" md "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc"
+buildvm64 -m peobj -o "$(IntDir)\lj_vm64.obj"
+buildvm64 -m bcdef -o "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_bcdef.h" lib_base.c lib_math.c lib_bit.c lib_string.c lib_table.c lib_io.c lib_os.c lib_package.c lib_debug.c lib_jit.c lib_ffi.c
+buildvm64 -m ffdef -o "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_ffdef.h" lib_base.c lib_math.c lib_bit.c lib_string.c lib_table.c lib_io.c lib_os.c lib_package.c lib_debug.c lib_jit.c lib_ffi.c
+buildvm64 -m libdef -o "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_libdef.h" lib_base.c lib_math.c lib_bit.c lib_string.c lib_table.c lib_io.c lib_os.c lib_package.c lib_debug.c lib_jit.c lib_ffi.c
+buildvm64 -m recdef -o "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_recdef.h" lib_base.c lib_math.c lib_bit.c lib_string.c lib_table.c lib_io.c lib_os.c lib_package.c lib_debug.c lib_jit.c lib_ffi.c
+buildvm64 -m folddef -o "..\..\..\intermediate\vs2019_$(Platform)_$(Configuration)\$(ProjectName)\inc\lj_folddef.h" lj_opt_fold.c</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

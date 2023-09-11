@@ -143,7 +143,7 @@ class CMainFrame: public CFrameWnd
 {
 protected:
 #ifdef SUPPORT_W7_TASKBAR
-    static UINT CMainFrame::s_taskBarMessage;
+    static UINT s_taskBarMessage;
 #endif // SUPPORT_W7_TASKBAR
     static CMainFrame *_theFrame;
     CMainFrame();   // Created by MFC only

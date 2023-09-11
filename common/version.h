@@ -61,6 +61,10 @@
 #define PRD_MINVER                  3 // minor product version
 #define PRD_PATCH                   0 // patch number
 #define PRD_BUILD                   HG_REV_NO // build number for product
+#if defined(TODO) || !defined(TODO)
+//This is a workaround until I will change the build file to CMAKE and see how this is suppose to fit in
+#define HG_REV_NO_NUMERIC 0.0.0.0
+#endif
 #define PRD_BUILD_NUMERIC           HG_REV_NO_NUMERIC // build number for product
 #if defined(WDS_RESLANG) && (WDS_RESLANG > 0)
 #   define FILE_MAJVER              1 // resource language version, changing this denotes incompatibilities
